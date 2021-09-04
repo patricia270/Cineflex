@@ -10,10 +10,10 @@ export default function App() {
         <BrowserRouter>
             <TopBar />
             <Switch>
-                <Route path="/home">
+                <Route path="/" exact>
                     <Movies />
                 </Route>
-                <Route path="/sections">
+                <Route path="/sections/:idMovie">
                     <Sections />
                 </Route>
                 <Route path="/seats">

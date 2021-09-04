@@ -1,26 +1,28 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-export default function MoviesSection() {
+export default function Movies() {
 
     const [images, setImages] = useState([]);
 
-useEffect(() => {
-    const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies");
-
-    promise.then(res => {
-        setImages([...res.data])
-    })
-}, [])
+    useEffect(() => {
+        axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies")
+            .then(res => {
+                setImages([...res.data])
+            })
+    }, [])
 
     return (
         <div className="movies">
             <h2 className="section-title">Selecione o Filme</h2>
-            
-              <ul className="movies-option">  {images.map((image) => (
-                    <li className="movie" key={image.id}>
-                        <img src={image.posterURL} alt="imagem do filme" />
-                    </li>
+                
+            <ul className="movies-option">  {images.map(({id, posterURL}) => (
+                <li className="movie" key={id}>
+                    <Link to={`/sections/${id}`}>
+                        <img src={posterURL} alt="imagem do filme" />
+                    </Link>
+                </li>
                 ))}                
             </ul>
         </div>
