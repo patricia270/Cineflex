@@ -133,8 +133,12 @@ span {
 }
 
 .seats-list {
+    width: 100vw;
+    height: 300px;
     display: flex;
+    flex-wrap: wrap;
     padding-left: 31px;
+    margin-top: -18px;
 }
 
 .number-seat {
@@ -148,7 +152,6 @@ span {
     justify-content: center;
     align-items: center;
     margin-right: 7px;
-    margin-top: -18px;
 
 }
 
@@ -218,6 +221,7 @@ span {
     border-radius: 3px;
     border: none;
     margin-top: 50px;
+    margin-bottom: 150px;
 }
 
 

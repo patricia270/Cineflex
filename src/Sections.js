@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function Sections() {
     const [sections, setSections] = useState ([]);
@@ -15,7 +15,6 @@ export default function Sections() {
             .then(res => {
                 setChosenMovie(res.data);
                 setSections([...res.data.days]);
-                console.log(res.data.days.date)
             })
     },[]);
 
@@ -27,8 +26,10 @@ export default function Sections() {
                 <>
                     <p className="day">{`${weekday} - ${date}`}</p>
                     <div className="hour-content" key={id}>
-                        {showtimes.map((hour) => (
-                            <div className="hour">{hour.name}</div>
+                        {showtimes.map(({name, id}) => (
+                            <Link to={`/seats/${id}`}>
+                                <div className="hour">{name}</div>
+                            </Link>
                         ))}
                     </div>
                 </>

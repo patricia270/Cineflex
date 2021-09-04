@@ -1,11 +1,34 @@
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function Seats() {
+    const [seats, setSeats] = useState([]);
+    const [chosenSection, setChosenSection] = useState("");
+    const [section, setSection] = useState ("");
+    const [hour, setHour] = useState("");
+    const {
+        idSection
+    } = useParams();
+
+    useEffect(() => {
+        axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${idSection}/seats`)
+            .then(res => {
+                setSeats([...res.data.seats])
+                console.log(res.data.seats)
+                setChosenSection(res.data.movie)
+                setSection(res.data.day);
+                setHour(res.data)
+            })
+    }, []);
+
     return (
         <div className="seats-content">
             <h2 className="section-title">Selecione o(s) assento(s)</h2>
             <ul className="seats-list">
-                <li className="number-seat">01</li>
+                {seats.map(({name}) => (
+                    <li className="number-seat">{name}</li>
+                ))}
             </ul>
             <ul className="seat-state-list">
                 <li className="seat-state">
@@ -32,11 +55,11 @@ export default function Seats() {
             </div>  
             <div className="footer">
                 <div className="movie-box-little">
-                    <img src="https://s3-alpha-sig.figma.com/img/618b/6ff1/fa721ddf7d65b2db581bec36dd2855dd?Expires=1631491200&Signature=Gvbnj96A8fyXrd49O4AS93u2Bt6ZDoL1Wi0IamiXj7owgVqFPuwQgabl5ft5SmNFihLKSrNSAdI0Q8aXx4EmmJJsS6GuQxI53JGLNVJLvtGCrOXi2cRRmCNT-AlYB4LIfKxxIS1CHc7kXmRe9Yte26xvonJEFLOc5p6qHhYx9AOlhLoR4~F2gvH4ols0KnZzOWlltdVbWNtbXgWJVIjy1PE0xFBf2UV1uMf4Pd0QhTcqrCpa0LoEOf7d7GCzjz771HguI~ibks94pmNGK7SNb9PLM8AUv42j3AtqVL9w12l7v9kqhXPij5EDB~mr4jr3rU6ZmWlBUlDIczPvlX8-uA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="imagem do filme" />
+                    <img src={chosenSection.posterURL} alt="imagem do filme" />
                 </div>
                 <div className="box-movie-and-day">
-                    <p>Enola Holmes</p>
-                    <p>Quinta-feira - 15:00</p>
+                    <p>{chosenSection.title}</p>
+                    <p>{`${section.weekday} - ${hour.name}`}</p>
                 </div>
             </div>      
         </div>

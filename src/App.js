@@ -16,7 +16,7 @@ export default function App() {
                 <Route path="/sections/:idMovie">
                     <Sections />
                 </Route>
-                <Route path="/seats">
+                <Route path="/seats/:idSection">
                     <Seats /> 
                 </Route> 
                 <Route path="/request">
