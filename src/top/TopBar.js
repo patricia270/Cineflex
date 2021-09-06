@@ -1,8 +1,8 @@
-import "./topbar.css"
+import {TopBarComponent,TopBarTitle } from "./topbarcss";
 export default function TopBar() {
     return (
-        <header className="top-bar">
-            <h1 className="top-bar-title">CINEFLEX</h1>
-        </header>
+        <TopBarComponent>
+            <TopBarTitle>CINEFLEX</TopBarTitle>
+        </TopBarComponent >
     );
 }

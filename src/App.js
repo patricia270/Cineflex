@@ -1,11 +1,27 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useState } from "react";
 import TopBar from "./top/TopBar";
 import Movies from "./Movies";
 import Sections from "./Sections";
 import Seats from "./Seats";
-import Request from "./Request";
+import Success from "./Success";
 
 export default function App() {
+
+    const [seats, setSeats] = useState([]);
+    const [chosenSection, setChosenSection] = useState("");
+    const [section, setSection] = useState ("");
+    const [hour, setHour] = useState("");
+    const [chosenOnesSeats, setChosenOnesSeats] = useState("");
+
+    const [buyer, setBuyer] = useState("");
+    const [cpf, setCpf] = useState("");
+    
+
+    function reserveSeat() {
+        console.log("funcionou")
+    }
+
     return (
         <BrowserRouter>
             <TopBar />
@@ -17,10 +33,13 @@ export default function App() {
                     <Sections />
                 </Route>
                 <Route path="/seats/:idSection">
-                    <Seats /> 
+                    <Seats chosenSection={chosenSection} reserveSeat={reserveSeat} seats={seats} setSeats={setSeats} chosenOnesSeats={chosenSection} 
+                    setChosenSection={setChosenSection} section={section} setSection={setSection}
+                    hour={hour} setHour={setHour} chosenOnesSeats={chosenOnesSeats} setChosenOnesSeats={setChosenOnesSeats}
+                    buyer={buyer} setBuyer={setBuyer} cpf={cpf} setCpf={setCpf} /> 
                 </Route> 
-                <Route path="/request">
-                    <Request /> 
+                <Route path="/success">
+                    <Success chosenOnesSeats={chosenOnesSeats}  hour={hour} buyer={buyer} cpf={cpf}/> 
                 </Route> 
             </Switch>   
         </BrowserRouter>

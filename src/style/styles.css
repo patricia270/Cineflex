@@ -80,6 +80,11 @@ body {
     align-items: center;
     margin-right: 8px;
     margin-bottom: 25px;
+    border: none;
+}
+
+.link {
+    text-decoration: none;
 }
 
 .footer {
@@ -182,7 +187,15 @@ span {
 
 .selected {
     background-color: #8DD7CF;
-    border: 1px solid #1AAE9E
+    border: 1px solid #1AAE9E;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
 }
 
 .available {
@@ -193,6 +206,15 @@ span {
 .unavailable {
     background-color: #FBE192;
     border: 1px solid #F7C52B;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+    pointer-events: none;
 }
 
 .form {
