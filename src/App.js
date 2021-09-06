@@ -13,14 +13,9 @@ export default function App() {
     const [section, setSection] = useState ("");
     const [hour, setHour] = useState("");
     const [chosenOnesSeats, setChosenOnesSeats] = useState("");
-    const [chosenOnesSeatsName, setChosenOnesSeatsName] = useState("")
-
-
+    const [chosenOnesSeatsName, setChosenOnesSeatsName] = useState("");
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState("");
-
-    console.log(`array de hour ${hour}`)
-    console.log(`array de choseOnesSeatsName ${hour}`)
     
     
     return (

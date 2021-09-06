@@ -10,7 +10,7 @@ export default function Seat ({isAvailable, id, name, setChosenOnesSeats, chosen
         if(!isAvailable){
             alert("Esse assento não está disponível");
         }
-        else{
+        else {
             if(selected === true){
             
                 setSelected(false);

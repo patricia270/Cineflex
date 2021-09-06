@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { SuccessDiv, SuccessContent, BoxButton, GoToHome  } from "./sucesscss";
 
 
 export default function Success({hour, buyer, cpf, chosenOnesSeatsName, chosenOnesSeats}) {
@@ -12,9 +13,9 @@ export default function Success({hour, buyer, cpf, chosenOnesSeatsName, chosenOn
     }, [])
 
     return (
-        <div className="success">
+        <SuccessDiv>
             <h2>Pedido feito com sucesso!</h2>
-            <div className="content">
+            <SuccessContent>
                 <h3>Filme e sessão</h3>
                 <p>{hour.movie.title}</p>
                 <p>{`${hour.day.date} ${hour.day.weekday}`}</p>
@@ -23,13 +24,12 @@ export default function Success({hour, buyer, cpf, chosenOnesSeatsName, chosenOn
                 <h3>Comprador</h3>
                 <p>{`Nome: ${buyer}`}</p>
                 <p>{`CPF: ${cpf}`}</p>
-            </div>
-            <div className="box-button">
+            </SuccessContent>
+            <BoxButton>
                 <Link className="link" to="/">
-                    <button className="go-to-home">Voltar pra a Home</button>
+                    <GoToHome>Voltar pra a Home</GoToHome>
                 </Link>
-            </div>
-        </div>
+            </BoxButton>
+        </SuccessDiv>
     );
 }
-
