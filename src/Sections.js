@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
-
+import Loading from "./Loading";
 
 export default function Sections() {
     const [sections, setSections] = useState ([]);
@@ -19,6 +19,12 @@ export default function Sections() {
                 setSections([...res.data.days]);
             })
     },[]);
+
+    if (chosenMovie === "") {
+        return (
+            <Loading />
+        );
+    }
 
   
     return (

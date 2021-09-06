@@ -1,5 +1,4 @@
 import { BrowserRouter, Switch, Route} from "react-router-dom";
-import { useEffect } from "react";
 import { useState } from "react";
 import TopBar from "./top/TopBar";
 import Movies from "./Movies";
@@ -20,6 +19,8 @@ export default function App() {
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState("");
 
+    console.log(`array de hour ${hour}`)
+    console.log(`array de choseOnesSeatsName ${hour}`)
     
     
     return (
@@ -33,7 +34,7 @@ export default function App() {
                     <Sections />
                 </Route>
                 <Route path="/seats/:idSection">
-                    <Seats chosenSection={chosenSection} seats={seats} setSeats={setSeats} chosenOnesSeats={chosenSection} 
+                    <Seats chosenSection={chosenSection} seats={seats} setSeats={setSeats} 
                     setChosenSection={setChosenSection} section={section} setSection={setSection}
                     hour={hour} setHour={setHour} chosenOnesSeats={chosenOnesSeats} setChosenOnesSeats={setChosenOnesSeats}
                     buyer={buyer} setBuyer={setBuyer} cpf={cpf} setCpf={setCpf} chosenOnesSeatsName={chosenOnesSeatsName} setChosenOnesSeatsName={setChosenOnesSeatsName} /> 

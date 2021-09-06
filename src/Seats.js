@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Seat from "./Seat";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Loading from "./Loading";
 
 
 export default function Seats({chosenSection, seats, setSeats, chosenOnesSeats, setChosenSection, section, setSection, hour, setHour, setChosenOnesSeats, buyer, setBuyer, cpf, setCpf, chosenOnesSeatsName, setChosenOnesSeatsName}) {
 
-
+    let valid = validation(buyer, cpf);
     const {
         idSection
     } = useParams();
@@ -23,6 +24,11 @@ export default function Seats({chosenSection, seats, setSeats, chosenOnesSeats, 
             })
     }, []);
 
+    if (setHour === "") {
+        return (
+            <Loading />
+        );
+    }
 
     return (
         <SeatsContent>
@@ -57,7 +63,7 @@ export default function Seats({chosenSection, seats, setSeats, chosenOnesSeats, 
                 <input type="text" placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)} />    
             </Form>                           
             <BoxButton>
-                <Link className="link" to="/success">
+                <Link className="link" to={valid ? "/success"  : "#"}>
                     < ReserveSeatsButton>Reservar assento(s)</ ReserveSeatsButton > 
                 </Link>
             </BoxButton>  
@@ -75,6 +81,12 @@ export default function Seats({chosenSection, seats, setSeats, chosenOnesSeats, 
     );
 
 }
+
+function validation(buyer, cpf) {
+
+    return buyer.length > 0 && cpf.length === 11;
+}
+
 
 
 const SectionTitle = styled.h2`

@@ -3,7 +3,6 @@ import styled from "styled-components"
 export default function Loading() {
     return (
         <LoadingScreen>
-            <img class="loading" src="./assets/loading.png" />
             <p>Carregando...</p>
         </LoadingScreen>
     );

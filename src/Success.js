@@ -10,7 +10,7 @@ export default function Success({hour, buyer, cpf, chosenOnesSeatsName, chosenOn
         
         promise.then((resp) => console.log(resp.data));
     }, [])
-    
+
     return (
         <div className="success">
             <h2>Pedido feito com sucesso!</h2>
@@ -24,11 +24,11 @@ export default function Success({hour, buyer, cpf, chosenOnesSeatsName, chosenOn
                 <p>{`Nome: ${buyer}`}</p>
                 <p>{`CPF: ${cpf}`}</p>
             </div>
-            <Link className="link" to="/">
-                <div className="box-button">
+            <div className="box-button">
+                <Link className="link" to="/">
                     <button className="go-to-home">Voltar pra a Home</button>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </div>
     );
 }
