@@ -1,4 +1,5 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
+import { useEffect } from "react";
 import { useState } from "react";
 import TopBar from "./top/TopBar";
 import Movies from "./Movies";
@@ -13,15 +14,14 @@ export default function App() {
     const [section, setSection] = useState ("");
     const [hour, setHour] = useState("");
     const [chosenOnesSeats, setChosenOnesSeats] = useState("");
+    const [chosenOnesSeatsName, setChosenOnesSeatsName] = useState("")
+
 
     const [buyer, setBuyer] = useState("");
     const [cpf, setCpf] = useState("");
+
     
-
-    function reserveSeat() {
-        console.log("funcionou")
-    }
-
+    
     return (
         <BrowserRouter>
             <TopBar />
@@ -33,13 +33,13 @@ export default function App() {
                     <Sections />
                 </Route>
                 <Route path="/seats/:idSection">
-                    <Seats chosenSection={chosenSection} reserveSeat={reserveSeat} seats={seats} setSeats={setSeats} chosenOnesSeats={chosenSection} 
+                    <Seats chosenSection={chosenSection} seats={seats} setSeats={setSeats} chosenOnesSeats={chosenSection} 
                     setChosenSection={setChosenSection} section={section} setSection={setSection}
                     hour={hour} setHour={setHour} chosenOnesSeats={chosenOnesSeats} setChosenOnesSeats={setChosenOnesSeats}
-                    buyer={buyer} setBuyer={setBuyer} cpf={cpf} setCpf={setCpf} /> 
+                    buyer={buyer} setBuyer={setBuyer} cpf={cpf} setCpf={setCpf} chosenOnesSeatsName={chosenOnesSeatsName} setChosenOnesSeatsName={setChosenOnesSeatsName} /> 
                 </Route> 
                 <Route path="/success">
-                    <Success chosenOnesSeats={chosenOnesSeats}  hour={hour} buyer={buyer} cpf={cpf}/> 
+                    <Success chosenOnesSeatsName={chosenOnesSeatsName}  hour={hour} buyer={buyer} cpf={cpf} chosenOnesSeats={chosenOnesSeats}/> 
                 </Route> 
             </Switch>   
         </BrowserRouter>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
-export default function Seats({reserveSeat, chosenSection, seats, setSeats, chosenOnesSeats, setChosenSection, section, setSection, hour, setHour, setChosenOnesSeats, buyer, setBuyer, cpf, setCpf}) {
+export default function Seats({chosenSection, seats, setSeats, chosenOnesSeats, setChosenSection, section, setSection, hour, setHour, setChosenOnesSeats, buyer, setBuyer, cpf, setCpf, chosenOnesSeatsName, setChosenOnesSeatsName}) {
 
 
     const {
@@ -23,7 +23,6 @@ export default function Seats({reserveSeat, chosenSection, seats, setSeats, chos
             })
     }, []);
 
-    console.log(hour.seats)
 
     return (
         <SeatsContent>
@@ -31,7 +30,7 @@ export default function Seats({reserveSeat, chosenSection, seats, setSeats, chos
             <SeatsList >
                 {seats.map((seat, index) => (
                     <Seat key={index} setChosenOnesSeats={setChosenOnesSeats} chosenOnesSeats={chosenOnesSeats}
-                    name={seat.name} isAvailable={seat.isAvailable} id={seat.id} />                    
+                    name={seat.name} isAvailable={seat.isAvailable} id={seat.id} chosenOnesSeatsName={chosenOnesSeatsName} setChosenOnesSeatsName={setChosenOnesSeatsName}/>                    
                 ))}
             </SeatsList >
             <SeatStateList>
@@ -58,7 +57,9 @@ export default function Seats({reserveSeat, chosenSection, seats, setSeats, chos
                 <input type="text" placeholder="Digite seu CPF..." onChange={e => setCpf(e.target.value)} />    
             </Form>                           
             <BoxButton>
-                < ReserveSeatsButton onClick={reserveSeat}>Reservar assento(s)</ ReserveSeatsButton >  
+                <Link className="link" to="/success">
+                    < ReserveSeatsButton>Reservar assento(s)</ ReserveSeatsButton > 
+                </Link>
             </BoxButton>  
             <Footer>
                 <SmallPictureBox>

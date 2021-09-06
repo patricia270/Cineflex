@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Loading from "./Loading";
 
 export default function Movies() {
 
@@ -14,7 +15,11 @@ export default function Movies() {
             })
     }, [])
 
-    console.log(movies)
+    if (movies.length === 0) {
+        return (
+            <Loading />
+        );
+    }
     return (
         <MoviesDiv>
             <SectionTitle>Selecione o Filme</SectionTitle>                

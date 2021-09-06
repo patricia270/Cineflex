@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function Seat ({isAvailable, id, name, setChosenOnesSeats, chosenOnesSeats}) {
+export default function Seat ({isAvailable, id, name, setChosenOnesSeats, chosenOnesSeats, chosenOnesSeatsName, setChosenOnesSeatsName}) {
 
     const [selected, setSelected] = useState(isAvailable);
     
@@ -14,14 +14,14 @@ export default function Seat ({isAvailable, id, name, setChosenOnesSeats, chosen
             if(selected === true){
             
                 setSelected(false);
-                setChosenOnesSeats([...chosenOnesSeats, {id, name}]);
-                console.log(selected);
+                setChosenOnesSeats([...chosenOnesSeats, {id}]);
+                setChosenOnesSeatsName([...chosenOnesSeatsName, {name}])
                 
             }
             else{
                 setSelected(true);
-                setChosenOnesSeats(chosenOnesSeats.filter((seat) => seat.id !== id));
-                console.log(selected)
+                setChosenOnesSeats(chosenOnesSeats.filter((seat) => seat !== id));
+                setChosenOnesSeatsName(chosenOnesSeatsName.filter((seatName) => seatName !== name));
             }
         }
     }
@@ -45,5 +45,4 @@ const NumberSeat = styled.li`
     align-items: center;
     margin-right: 7px;
 `;
-
 
